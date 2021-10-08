@@ -1,0 +1,42 @@
+@startuml FirebaseAuth
+namespace FirebaseAuth {
+    class Constant {
+        {static} + string ROOT_PATH
+    }
+
+    class FirebaseAuth {
+        {static} + void Initialize()
+    }
+}
+
+namespace FirebaseAuth.Config {
+    enum ConfigEnvironment {
+        Development
+        Production
+    }
+
+    class ConfigLoader {
+        - ConfigEnvironment targetEnv
+        + FirebaseAuthConfig Config
+    }
+
+    class ConfigProvider {
+        {static} - ConfigLoader _configLoader
+        {static} + OAuthConfig OAuthConfig
+        {static} + void Initialize()
+    }
+
+    class FirebaseAuthConfig {
+        + OAuthConfig OAuthConfig
+    }
+
+    class OAuthConfig {
+        + string cliendID
+        + string cliendSecret
+    }
+
+    ConfigProvider o-- ConfigLoader
+    ConfigEnvironment <-- ConfigLoader
+    FirebaseAuthConfig o-- OAuthConfig
+}
+@enduml

@@ -15,7 +15,7 @@ namespace FirebaseAuth.Config
     {
         [SerializeField]
         private ConfigEnvironment targetEnv = ConfigEnvironment.Development;
-        private FirebaseAuthConfigs config;
+        private FirebaseAuthConfig _config;
 
         void Awake()
         {
@@ -27,16 +27,16 @@ namespace FirebaseAuth.Config
         /// <summary>
         /// Conf値
         /// </summary>
-        public FirebaseAuthConfigs Config
+        public FirebaseAuthConfig Config
         {
             //configがnullならロードしてキャッシュする
             get
             {
-                if (config == null)
+                if (_config == null)
                 {
                     Debug.Log("FirebaseAuthConfig is not loaded yet.");
                 }
-                return config;
+                return _config;
             }
         }
 
@@ -46,23 +46,23 @@ namespace FirebaseAuth.Config
         /// <returns></returns>
         private async void LoadConfig()
         {
-            AsyncOperationHandle<FirebaseAuthConfigs> op;
+            AsyncOperationHandle<FirebaseAuthConfig> op;
             // 愚直にswitchで
             // 他にもっといい方法あるかも
             switch (targetEnv)
             {
                 case ConfigEnvironment.Development:
-                    op = Addressables.LoadAssetAsync<FirebaseAuthConfigs>(Constant.getAssetPath("DevelopmentConfig"));
+                    op = Addressables.LoadAssetAsync<FirebaseAuthConfig>(Constant.getAssetPath("DevelopmentConfig"));
                     break;
                 case ConfigEnvironment.Production:
-                    op = Addressables.LoadAssetAsync<FirebaseAuthConfigs>(Constant.getAssetPath("ProductionConfig"));
+                    op = Addressables.LoadAssetAsync<FirebaseAuthConfig>(Constant.getAssetPath("ProductionConfig"));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            FirebaseAuthConfigs configs = await op.Task;
-            this.config = configs;
+            FirebaseAuthConfig config = await op.Task;
+            this._config = config;
             Addressables.Release(op);
         }
     }
