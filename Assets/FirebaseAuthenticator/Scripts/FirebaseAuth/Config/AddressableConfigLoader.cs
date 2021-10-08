@@ -3,25 +3,12 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using Zenject;
 
 namespace FirebaseAuth.Config
 {
-    public enum ConfigEnvironment
+    public class AddressableConfigProvider : IConfigProvider
     {
-        Development,
-        Production,
-    }
-
-    public enum LoadingState
-    {
-        WaitingToLoad,
-        Loading,
-        Completed
-    }
-    
-    public class ConfigLoader : SingletonMonoBehaviour<ConfigLoader>
-    {
-        [SerializeField]
         private ConfigEnvironment targetEnv = ConfigEnvironment.Development;
         private FirebaseAuthConfig _config;
         private Subject<LoadingState> stateSubject = new Subject<LoadingState>();
@@ -30,10 +17,8 @@ namespace FirebaseAuth.Config
             get { return stateSubject; }
         }
 
-        void Awake()
+        public AddressableConfigProvider()
         {
-            //シーンをまたいでも消さない
-            DontDestroyOnLoad(gameObject);
             LoadConfig();
             stateSubject.OnNext(LoadingState.WaitingToLoad);
         }
@@ -49,6 +34,7 @@ namespace FirebaseAuth.Config
                 if (_config == null)
                 {
                     Debug.Log("FirebaseAuthConfig is not loaded yet.");
+                    LoadConfig();
                 }
                 return _config;
             }

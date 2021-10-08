@@ -1,5 +1,4 @@
 ﻿using FirebaseAuth.Config;
-using UnityEngine;
 
 namespace FirebaseAuth
 {
@@ -7,7 +6,6 @@ namespace FirebaseAuth
     {
         public static void Initialize()
         {
-            ConfigProvider.Initialize();
         }
     }
 }

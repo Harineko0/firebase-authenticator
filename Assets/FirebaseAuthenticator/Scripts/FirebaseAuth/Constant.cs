@@ -1,4 +1,4 @@
-﻿namespace FirebaseAuth.Config
+﻿namespace FirebaseAuth
 {
     public static class Constant
     {
