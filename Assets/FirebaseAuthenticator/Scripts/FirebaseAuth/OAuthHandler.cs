@@ -11,6 +11,7 @@ namespace FirebaseAuth
         private void Start()
         {
             FirebaseAuth.Initialize();
+            
         }
 
         // Start is called before the first frame update

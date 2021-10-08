@@ -35,7 +35,7 @@ namespace FirebaseAuth.Config {
         + string cliendSecret
     }
 
-    ConfigProvider o-- ConfigLoader
+    ConfigLoader o-- ConfigProvider
     ConfigEnvironment <-- ConfigLoader
     FirebaseAuthConfig o-- OAuthConfig
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -10,18 +11,31 @@ namespace FirebaseAuth.Config
         Development,
         Production,
     }
+
+    public enum LoadingState
+    {
+        WaitingToLoad,
+        Loading,
+        Completed
+    }
     
     public class ConfigLoader : SingletonMonoBehaviour<ConfigLoader>
     {
         [SerializeField]
         private ConfigEnvironment targetEnv = ConfigEnvironment.Development;
         private FirebaseAuthConfig _config;
+        private Subject<LoadingState> stateSubject = new Subject<LoadingState>();
+        public IObservable<LoadingState> OnStateChanged
+        {
+            get { return stateSubject; }
+        }
 
         void Awake()
         {
             //シーンをまたいでも消さない
             DontDestroyOnLoad(gameObject);
             LoadConfig();
+            stateSubject.OnNext(LoadingState.WaitingToLoad);
         }
 
         /// <summary>
@@ -46,6 +60,7 @@ namespace FirebaseAuth.Config
         /// <returns></returns>
         private async void LoadConfig()
         {
+            stateSubject.OnNext(LoadingState.Loading);
             AsyncOperationHandle<FirebaseAuthConfig> op;
             // 愚直にswitchで
             // 他にもっといい方法あるかも
@@ -64,6 +79,7 @@ namespace FirebaseAuth.Config
             FirebaseAuthConfig config = await op.Task;
             this._config = config;
             Addressables.Release(op);
+            stateSubject.OnNext(LoadingState.Completed);
         }
     }
 }
