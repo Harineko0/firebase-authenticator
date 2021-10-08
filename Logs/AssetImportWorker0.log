@@ -17,3 +17,166 @@ Logs/AssetImportWorker0.log
 -srvPort
 51945
 Successfully changed project path to: C:/Users/hatin/UnityProjects/Firebase-Authenticator
+C:/Users/hatin/UnityProjects/Firebase-Authenticator
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 32.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.19f1 (68f137dc9bbe)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/2020.3.19f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/hatin/UnityProjects/Firebase-Authenticator/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1660 SUPER (ID=0x21c4)
+    Vendor:   
+    VRAM:     5991 MB
+    Driver:   27.21.14.5671
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/2020.3.19f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/2020.3.19f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/2020.3.19f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56948
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/2020.3.19f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/2020.3.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002030 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 30.90 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.673 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1673ms)
+		BeginReloadAssembly (47ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (363ms)
+			LoadAssemblies (45ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (138ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (27ms)
+			SetupLoadedEditorAssemblies (138ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (31ms)
+				BeforeProcessingInitializeOnLoad (12ms)
+				ProcessInitializeOnLoadAttributes (68ms)
+				ProcessInitializeOnLoadMethodAttributes (23ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.002611 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.40 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.961 seconds
+Domain Reload Profiling:
+	ReloadAssembly (961ms)
+		BeginReloadAssembly (127ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (17ms)
+		EndReloadAssembly (777ms)
+			LoadAssemblies (73ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (238ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (37ms)
+			SetupLoadedEditorAssemblies (342ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (89ms)
+				ProcessInitializeOnLoadAttributes (237ms)
+				ProcessInitializeOnLoadMethodAttributes (4ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Refreshing native plugins compatible for Editor in 0.63 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1849 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 79.8 MB.
+System memory in use after: 79.9 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2286.
+Total: 2.985500 ms (FindLiveObjects: 0.224400 ms CreateObjectMapping: 0.053700 ms MarkObjects: 2.638400 ms  DeleteObjects: 0.067500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/FirebaseAuthenticator/Scripts/FirebaseAuth
+  artifactKey: Guid(d6114f3fee584e35a3b06c98a948e135) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FirebaseAuthenticator/Scripts/FirebaseAuth using Guid(d6114f3fee584e35a3b06c98a948e135) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '174e78ef5071a52353206323ee0c4a49') in 0.009895 seconds 
+  Import took 0.013957 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/FirebaseAuthenticator/Scripts/FirebaseAuth/FirebaseAuth.cs
+  artifactKey: Guid(9e95a986e70442bf8f370019870a0ce9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FirebaseAuthenticator/Scripts/FirebaseAuth/FirebaseAuth.cs using Guid(9e95a986e70442bf8f370019870a0ce9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54576dae25d053e848c819af4fa3a226') in 0.012093 seconds 
+  Import took 0.015847 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 451.787031 seconds.
+  path: Assets/FirebaseAuthenticator/Configs/DevelopmentConfig.asset
+  artifactKey: Guid(e16224f06e189164a96bfe0295f17b12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FirebaseAuthenticator/Configs/DevelopmentConfig.asset using Guid(e16224f06e189164a96bfe0295f17b12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80de6252b50a47a986ff4c80c202a2b1') in 0.016638 seconds 
+  Import took 0.020512 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.972464 seconds.
+  path: Assets/FirebaseAuthenticator/Configs/DevelopmentConfig 1.asset
+  artifactKey: Guid(9f1408b6ef43c7c429cd5c0a7b783159) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FirebaseAuthenticator/Configs/DevelopmentConfig 1.asset using Guid(9f1408b6ef43c7c429cd5c0a7b783159) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '770b50b72d65194d43e802bb46623d93') in 0.007917 seconds 
+  Import took 0.011955 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.728070 seconds.
+  path: Assets/FirebaseAuthenticator/Configs/Production Config.asset
+  artifactKey: Guid(9f1408b6ef43c7c429cd5c0a7b783159) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FirebaseAuthenticator/Configs/Production Config.asset using Guid(9f1408b6ef43c7c429cd5c0a7b783159) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5719a4751dfde427c66caa6d13d732c') in 0.007879 seconds 
+  Import took 0.011460 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 84.059562 seconds.
+  path: Assets/FirebaseAuthenticator/Configs/Development Config.asset
+  artifactKey: Guid(e16224f06e189164a96bfe0295f17b12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FirebaseAuthenticator/Configs/Development Config.asset using Guid(e16224f06e189164a96bfe0295f17b12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50dfd98a439414848df72a6d1bf01b9d') in 0.008030 seconds 
+  Import took 0.011905 seconds .
+
