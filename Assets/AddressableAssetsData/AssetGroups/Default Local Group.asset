@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: FirebaseAuthenticator/ConfigLoader
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 9f1408b6ef43c7c429cd5c0a7b783159
+    m_Address: FirebaseAuthenticator/ProductionConfig
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: e16224f06e189164a96bfe0295f17b12
     m_Address: FirebaseAuthenticator/DevelopmentConfig
     m_ReadOnly: 0
