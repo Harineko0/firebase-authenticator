@@ -3,22 +3,22 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using Zenject;
 
 namespace FirebaseAuth.Config
 {
-    public class AddressableConfigProvider : IConfigProvider
+    public class AddressableConfigLoader : SingletonMonoBehaviour<AddressableConfigLoader>, IConfigLoader
     {
-        private ConfigEnvironment targetEnv = ConfigEnvironment.Development;
-        private FirebaseAuthConfig _config;
+        [SerializeField] private ConfigEnvironment Environment = ConfigEnvironment.Development;
+        private FirebaseAuthConfig config;
         private Subject<LoadingState> stateSubject = new Subject<LoadingState>();
         public IObservable<LoadingState> OnStateChanged
         {
             get { return stateSubject; }
         }
 
-        public AddressableConfigProvider()
+        private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
             LoadConfig();
             stateSubject.OnNext(LoadingState.WaitingToLoad);
         }
@@ -31,12 +31,12 @@ namespace FirebaseAuth.Config
             //configがnullならロードしてキャッシュする
             get
             {
-                if (_config == null)
+                if (config == null)
                 {
                     Debug.Log("FirebaseAuthConfig is not loaded yet.");
                     LoadConfig();
                 }
-                return _config;
+                return config;
             }
         }
 
@@ -50,7 +50,7 @@ namespace FirebaseAuth.Config
             AsyncOperationHandle<FirebaseAuthConfig> op;
             // 愚直にswitchで
             // 他にもっといい方法あるかも
-            switch (targetEnv)
+            switch (Environment)
             {
                 case ConfigEnvironment.Development:
                     op = Addressables.LoadAssetAsync<FirebaseAuthConfig>(Constant.getAssetPath("DevelopmentConfig"));
@@ -62,8 +62,8 @@ namespace FirebaseAuth.Config
                     throw new ArgumentOutOfRangeException();
             }
 
-            FirebaseAuthConfig config = await op.Task;
-            this._config = config;
+            FirebaseAuthConfig result = await op.Task;
+            this.config = result;
             Addressables.Release(op);
             stateSubject.OnNext(LoadingState.Completed);
         }

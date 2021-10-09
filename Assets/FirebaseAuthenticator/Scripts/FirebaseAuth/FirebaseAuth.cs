@@ -6,6 +6,7 @@ namespace FirebaseAuth
     {
         public static void Initialize()
         {
+            ConfigProvider.Initialize();
         }
     }
 }

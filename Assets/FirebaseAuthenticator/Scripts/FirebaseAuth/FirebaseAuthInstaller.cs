@@ -7,7 +7,7 @@ namespace FirebaseAuth
     {
         public override void InstallBindings()
         {
-            Container.Bind<IConfigProvider>().To<AddressableConfigProvider>().AsCached();
+            // Container.Bind<IConfigLoader>().To<AddressableConfigLoader>().AsCached();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace FirebaseAuth.Config
         Completed
     }
 
-    interface IConfigProvider
+    interface IConfigLoader
     {
         public IObservable<LoadingState> OnStateChanged { get; }
         public FirebaseAuthConfig Config { get; }

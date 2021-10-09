@@ -7,9 +7,6 @@ namespace FirebaseAuth
 {
     public class OAuthHandler : MonoBehaviour
     {
-        [Inject] 
-        private IConfigProvider _configProvider;
-        
         private void Start()
         {
             FirebaseAuth.Initialize();
@@ -18,7 +15,7 @@ namespace FirebaseAuth
         // Start is called before the first frame update
         public void OnClick()
         {
-            var cliendID = _configProvider.Config.OAuthConfig.clientSecret;
+            var cliendID = ConfigProvider.OAuthConfig.cliendID;
             Debug.Log(cliendID);
         }
     }
