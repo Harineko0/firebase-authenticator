@@ -15,10 +15,15 @@ namespace FirebaseAuth.Config {
         Production
     }
 
-    enum LoadingState {
-        WaitingToLoad
-        Loading
-        Complete
+    class ConfigLoader {
+        - ConfigEnvironment targetEnv
+        + FirebaseAuthConfig Config
+    }
+
+    class ConfigProvider {
+        {static} - ConfigLoader _configLoader
+        {static} + OAuthConfig OAuthConfig
+        {static} + void Initialize()
     }
 
     class FirebaseAuthConfig {
@@ -30,16 +35,8 @@ namespace FirebaseAuth.Config {
         + string cliendSecret
     }
 
-    interface IConfigProvider {
-        + IObservable<LoadingState> OnStateChanged
-        + FirebaseAuthConfig Config
-    }
-
-    class AddressableConfigProvider implements IConfigProvider {
-    }
-
-    LoadingState <-- IConfigProvider
-    ConfigEnvironment <-- AddressableConfigProvider
+    ConfigLoader o-- ConfigProvider
+    ConfigEnvironment <-- ConfigLoader
     FirebaseAuthConfig o-- OAuthConfig
 }
 @enduml
