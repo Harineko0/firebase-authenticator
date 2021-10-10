@@ -2,10 +2,22 @@
 namespace Pibrary {
     class Constant {
         {static} + string ROOT_PATH
+        {static} + string getAssetPath(string name)
     }
 
-    class Pibrary {
-        {static} + void Initialize()
+    class Pibrary<<Singleton>> {
+        + Pibrary DefaultInstance
+        + IAuthHandler AuthHandler
+        + IDataHandler<UserData> DataHandler
+        + IDataStore<SaveData> DataStore
+        + void Initialize()
+        
+    }
+
+    enum LoadingState {
+        WaitingToLoad
+        Loading
+        Completed
     }
 }
 
@@ -14,12 +26,6 @@ namespace Pibrary.Config {
     {
         Development
         Production
-    }
-
-    enum LoadingState {
-        WaitingToLoad
-        Loading
-        Completed
     }
 
     interface IConfigLoader {
@@ -39,6 +45,7 @@ namespace Pibrary.Config {
 
     class PibraryConfig {
         + OAuthConfig OAuthConfig
+        + ContentConfig ContentConfig
     }
 
     class OAuthConfig {
@@ -46,24 +53,81 @@ namespace Pibrary.Config {
         + string cliendSecret
     }
 
-    PibraryConfig --o IConfigLoader
+    class ContentConfig {
+        + string contentID
+    }
+
+    PibraryConfig <-- IConfigLoader
     ConfigProvider ..> IConfigLoader
+    PibraryConfig o-- ContentConfig
     PibraryConfig o-- OAuthConfig
-    LoadingState <-- IConfigLoader
     Environment <-- AddressableConfigLoader
 }
 
 namespace Pibrary.Auth {
+    interface IAuthHandler {
+        + IObservable<LoadingState> OnStateChanged 
+        + void GoogleSignIn()
+        + void EmailSignIn(string email, string password)
+    }
 
-}
-
-namespace Pibrary.User {
-
+    class FirebaseAuthHandler implements IAuthHandler {
+    }
 }
 
 namespace Pibrary.Data {
+    class UserData {
+        + List<DocumentReference> accessibleAuthorRef
+        + List<DocumentReference> purchasedContentsRef
+    }
 
+    class SaveData {
+        + boolean isPurchased
+    }
+
+    interface IDataHandler<T> {
+        + IObservable<LoadingState> OnStateChanged 
+        + IReadOnlyReactiveProperty<T> Data
+        + T FetchUserData(string uid)
+    }
+
+    class FirestoreDataHandler implements IDataHandler {
+
+    }
+
+    interface IDataStore<T> {
+        + IReadOnlyReactiveProperty<T> SaveData
+        + void Save()
+        + T Load()
+    }
+
+    class SerialDataStore<T> implements IDataStore {
+
+    }
 }
 
+namespace Pibrary.Presenters {
+    class AuthPresenter {
+        - Button googleButton
+        - Button emailButton
+        - Text emailField
+        - Text passwordField
+        - Button submitButton
+        + void OnGoogleSignIn()
+        + void OnEmailSignIn()
+    }
+}
+
+Pibrary.Pibrary o-- Pibrary.Auth.IAuthHandler
+Pibrary.Pibrary o-- Pibrary.Data.IDataHandler
+Pibrary.Pibrary o-- Pibrary.Data.IDataStore
+Pibrary.Auth.IAuthHandler <-- Pibrary.Presenters.AuthPresenter
+Pibrary.Data.IDataHandler <-- Pibrary.Presenters.AuthPresenter
+Pibrary.Data.SaveData <-- Pibrary.Pibrary
+Pibrary.Data.UserData <-- Pibrary.Pibrary
+Pibrary.LoadingState <-- Pibrary.Data.IDataHandler
+Pibrary.LoadingState <-- Pibrary.Auth.IAuthHandler
+Pibrary.LoadingState <-- Pibrary.Config.IConfigLoader
+Pibrary.Auth.FirebaseAuthHandler --> Pibrary.Config.ConfigProvider : Get cliendID and clientSecret
 Pibrary.Config.ConfigProvider <.. Pibrary.Pibrary
 @enduml

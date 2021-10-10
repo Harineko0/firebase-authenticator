@@ -1,7 +1,7 @@
 using Pibrary.Config;
 using UniRx;
 using UnityEngine;
-using Zenject;
+using Firebase.Firestore;
 
 namespace Pibrary
 {
@@ -9,7 +9,7 @@ namespace Pibrary
     {
         private void Start()
         {
-            Pibrary.Instance.Initialize();
+            Pibrary.DefaultInstance.Initialize();
         }
 
         // Start is called before the first frame update
