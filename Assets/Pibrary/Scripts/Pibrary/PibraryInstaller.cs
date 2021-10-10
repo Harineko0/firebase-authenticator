@@ -1,9 +1,9 @@
-using FirebaseAuth.Config;
+using Pibrary.Config;
 using Zenject;
 
-namespace FirebaseAuth
+namespace Pibrary
 { 
-    public class FirebaseAuthInstaller : MonoInstaller
+    public class PibraryInstaller : MonoInstaller
     {
         public override void InstallBindings()
         {

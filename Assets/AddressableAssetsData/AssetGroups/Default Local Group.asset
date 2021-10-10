@@ -18,15 +18,15 @@ MonoBehaviour:
   m_GUID: 64f79367a9de13840863c01a97ff24c3
   m_SerializeEntries:
   - m_GUID: 9f1408b6ef43c7c429cd5c0a7b783159
-    m_Address: FirebaseAuthenticator/ProductionConfig
+    m_Address: Pibrary/ProductionConfig
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: e16224f06e189164a96bfe0295f17b12
-    m_Address: FirebaseAuthenticator/DevelopmentConfig
+    m_Address: Pibrary/DevelopmentConfig
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 326e85e7f5e69a24c98650df110baa9d
-    m_Address: FirebaseAuthenticator/ConfigLoader
+    m_Address: Pibrary/ConfigLoader
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

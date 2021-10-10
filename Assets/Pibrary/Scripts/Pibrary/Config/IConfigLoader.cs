@@ -1,13 +1,7 @@
 ﻿using System;
 
-namespace FirebaseAuth.Config
+namespace Pibrary.Config
 {
-    public enum ConfigEnvironment
-    {
-        Development,
-        Production,
-    }
-
     public enum LoadingState
     {
         WaitingToLoad,
@@ -18,7 +12,7 @@ namespace FirebaseAuth.Config
     interface IConfigLoader
     {
         public IObservable<LoadingState> OnStateChanged { get; }
-        public FirebaseAuthConfig Config { get; }
+        public PibraryConfig Config { get; }
         
     }
 }

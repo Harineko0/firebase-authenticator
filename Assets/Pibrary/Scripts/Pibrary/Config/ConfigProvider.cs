@@ -2,7 +2,7 @@
 using UnityEngine.AddressableAssets;
 using Zenject;
 
-namespace FirebaseAuth.Config
+namespace Pibrary.Config
 {
     public static class ConfigProvider
     {

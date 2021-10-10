@@ -1,11 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
-namespace FirebaseAuth.Config
+namespace Pibrary.Config
 {
-    [CreateAssetMenu(fileName = "Data", menuName = "FirebaseAuthenticator/Scriptable/Create FirebaseAuthConfig")]
+    [CreateAssetMenu(fileName = "Data", menuName = "Pibrary/Scriptable/Create FirebaseAuthConfig")]
     [Serializable]
-    public class FirebaseAuthConfig : ScriptableObject
+    public class PibraryConfig : ScriptableObject
     {
         [SerializeField]
         public OAuthConfig OAuthConfig = new OAuthConfig();

@@ -1,32 +1,43 @@
-@startuml FirebaseAuth
-namespace FirebaseAuth {
+@startuml Pibrary
+namespace Pibrary {
     class Constant {
         {static} + string ROOT_PATH
     }
 
-    class FirebaseAuth {
+    class Pibrary {
         {static} + void Initialize()
     }
 }
 
-namespace FirebaseAuth.Config {
-    enum ConfigEnvironment {
+namespace Pibrary.Config {
+    enum Environment
+    {
         Development
         Production
     }
 
-    class ConfigLoader {
-        - ConfigEnvironment targetEnv
-        + FirebaseAuthConfig Config
+    enum LoadingState {
+        WaitingToLoad
+        Loading
+        Completed
+    }
+
+    interface IConfigLoader {
+        + IObservable<LoadingState> OnStateChanged
+        + PibraryConfig Config
+    }
+
+    class AddressableConfigLoader implements IConfigLoader {
+        - Environment environment
     }
 
     class ConfigProvider {
-        {static} - ConfigLoader _configLoader
+        {static} - IConfigLoader configLoader
         {static} + OAuthConfig OAuthConfig
         {static} + void Initialize()
     }
 
-    class FirebaseAuthConfig {
+    class PibraryConfig {
         + OAuthConfig OAuthConfig
     }
 
@@ -35,8 +46,24 @@ namespace FirebaseAuth.Config {
         + string cliendSecret
     }
 
-    ConfigLoader o-- ConfigProvider
-    ConfigEnvironment <-- ConfigLoader
-    FirebaseAuthConfig o-- OAuthConfig
+    PibraryConfig --o IConfigLoader
+    ConfigProvider ..> IConfigLoader
+    PibraryConfig o-- OAuthConfig
+    LoadingState <-- IConfigLoader
+    Environment <-- AddressableConfigLoader
 }
+
+namespace Pibrary.Auth {
+
+}
+
+namespace Pibrary.User {
+
+}
+
+namespace Pibrary.Data {
+
+}
+
+Pibrary.Config.ConfigProvider <.. Pibrary.Pibrary
 @enduml

@@ -1,15 +1,15 @@
-using FirebaseAuth.Config;
+using Pibrary.Config;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace FirebaseAuth
+namespace Pibrary
 {
     public class OAuthHandler : MonoBehaviour
     {
         private void Start()
         {
-            FirebaseAuth.Initialize();
+            Pibrary.Instance.Initialize();
         }
 
         // Start is called before the first frame update

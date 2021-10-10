@@ -1,10 +1,10 @@
-﻿using FirebaseAuth.Config;
+﻿using Pibrary.Config;
 
-namespace FirebaseAuth
+namespace Pibrary
 {
     public static class Constant
     {
-        public readonly static string ROOT_PATH = "FirebaseAuthenticator/";
+        public readonly static string ROOT_PATH = "Pibrary/";
         
         public static string getAssetPath(string name)
         {

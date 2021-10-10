@@ -4,12 +4,19 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace FirebaseAuth.Config
+namespace Pibrary.Config
 {
+    public enum Environment
+    {
+        Development,
+        Production,
+    }
+    
     public class AddressableConfigLoader : SingletonMonoBehaviour<AddressableConfigLoader>, IConfigLoader
     {
-        [SerializeField] private ConfigEnvironment Environment = ConfigEnvironment.Development;
-        private FirebaseAuthConfig config;
+        [SerializeField]
+        private Environment environment = Environment.Development;
+        private PibraryConfig config;
         private Subject<LoadingState> stateSubject = new Subject<LoadingState>();
         public IObservable<LoadingState> OnStateChanged
         {
@@ -26,7 +33,7 @@ namespace FirebaseAuth.Config
         /// <summary>
         /// Conf値
         /// </summary>
-        public FirebaseAuthConfig Config
+        public PibraryConfig Config
         {
             //configがnullならロードしてキャッシュする
             get
@@ -47,22 +54,22 @@ namespace FirebaseAuth.Config
         private async void LoadConfig()
         {
             stateSubject.OnNext(LoadingState.Loading);
-            AsyncOperationHandle<FirebaseAuthConfig> op;
+            AsyncOperationHandle<PibraryConfig> op;
             // 愚直にswitchで
             // 他にもっといい方法あるかも
-            switch (Environment)
+            switch (environment)
             {
-                case ConfigEnvironment.Development:
-                    op = Addressables.LoadAssetAsync<FirebaseAuthConfig>(Constant.getAssetPath("DevelopmentConfig"));
+                case Environment.Development:
+                    op = Addressables.LoadAssetAsync<PibraryConfig>(Constant.getAssetPath("DevelopmentConfig"));
                     break;
-                case ConfigEnvironment.Production:
-                    op = Addressables.LoadAssetAsync<FirebaseAuthConfig>(Constant.getAssetPath("ProductionConfig"));
+                case Environment.Production:
+                    op = Addressables.LoadAssetAsync<PibraryConfig>(Constant.getAssetPath("ProductionConfig"));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            FirebaseAuthConfig result = await op.Task;
+            PibraryConfig result = await op.Task;
             this.config = result;
             Addressables.Release(op);
             stateSubject.OnNext(LoadingState.Completed);
