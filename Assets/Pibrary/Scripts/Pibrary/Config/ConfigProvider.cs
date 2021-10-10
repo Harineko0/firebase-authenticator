@@ -32,6 +32,11 @@ namespace Pibrary.Config
         {
             get { return Loader.Config.OAuthConfig; }
         }
+
+        public static ContentConfig ContentConfig
+        {
+            get { return Loader.Config.ContentConfig; }
+        }
         
         public static void Initialize()
         {

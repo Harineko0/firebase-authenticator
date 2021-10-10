@@ -7,8 +7,8 @@ namespace Pibrary.Config
     [Serializable]
     public class PibraryConfig : ScriptableObject
     {
-        [SerializeField]
-        public OAuthConfig OAuthConfig = new OAuthConfig();
+        [SerializeField] public OAuthConfig OAuthConfig = new OAuthConfig();
+        [SerializeField] public ContentConfig ContentConfig = new ContentConfig();
     }
     
     [Serializable]
@@ -16,5 +16,11 @@ namespace Pibrary.Config
     {
         public string cliendID = "";
         public string clientSecret = "";
+    }
+
+    [Serializable]
+    public class ContentConfig
+    {
+        public string ContentID = "";
     }
 }
