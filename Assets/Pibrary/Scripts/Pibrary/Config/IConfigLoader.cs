@@ -6,7 +6,7 @@ namespace Pibrary.Config
     {
         WaitingToLoad,
         Loading,
-        Completed
+        Completed,
     }
 
     interface IConfigLoader
