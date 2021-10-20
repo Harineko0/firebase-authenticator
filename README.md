@@ -1,7 +1,7 @@
 ﻿# Pibrary for Unity
 
 ## Dependencies
-Addressable
+Addressable  
 UniRx  
 FirebaseAnalytics  
 FirebaseAuth  

@@ -113,8 +113,6 @@ namespace Pibrary.Presenters {
         - Text emailField
         - Text passwordField
         - Button submitButton
-        + void OnGoogleSignIn()
-        + void OnEmailSignIn()
     }
 }
 

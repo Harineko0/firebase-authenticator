@@ -1,4 +1,7 @@
-﻿using Pibrary.Config;
+﻿using Pibrary.Auth;
+using Pibrary.Config;
+using Pibrary.Data;
+using UnityEngine;
 
 namespace Pibrary
 {
@@ -11,10 +14,27 @@ namespace Pibrary
         public static Pibrary DefaultInstance { get => instance; }
         
         #endregion
+
+        private IAuthHandler authHandler;
+        public IAuthHandler AuthHandler
+        {
+            get { return authHandler; }
+        }
+
+        private IDataStore<SaveData> dataStore;
+        public IDataStore<SaveData> DataStore
+        {
+            get { return dataStore; }
+        }
         
         public void Initialize()
         {
             ConfigProvider.Initialize();
+            authHandler = new FirebaseAuthHandler();
+            dataStore = new SerialDataStore<SaveData>();
+
+            SaveData data = DataStore.SaveData;
+            Debug.Log(data.purchased);
         }
     }
 }
