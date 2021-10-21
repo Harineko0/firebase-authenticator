@@ -32,9 +32,6 @@ namespace Pibrary
             ConfigProvider.Initialize();
             authHandler = new FirebaseAuthHandler();
             dataStore = new SerialDataStore<SaveData>();
-
-            SaveData data = DataStore.SaveData;
-            Debug.Log(data.purchased);
         }
     }
 }

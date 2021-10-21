@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Pibrary.Data
 {
-    public class SerialDataStore<T> : IDataStore<T> where T : class
+    public class SerialDataStore<T> : IDataStore<T> where T : class, new()
     {
         private T saveData;
 
@@ -34,10 +34,18 @@ namespace Pibrary.Data
         public T Load()
         {
             T data;
-            using (FileStream fs = new FileStream(SavePath, FileMode.Open, FileAccess.Read))
+            
+            if (File.Exists(SavePath))
             {
-                BinaryFormatter bf = new BinaryFormatter();
-                data = bf.Deserialize(fs) as T;
+                using (FileStream fs = new FileStream(SavePath, FileMode.Open, FileAccess.Read))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    data = bf.Deserialize(fs) as T;
+                }
+            }
+            else
+            {
+                data = new T();
             }
 
             saveData = data;
