@@ -4,7 +4,7 @@ namespace Pibrary
 {
     public static class Constant
     {
-        public readonly static string ROOT_PATH = "Pibrary/";
+        private readonly static string ROOT_PATH = "Pibrary/";
         
         public static string getAssetPath(string name)
         {

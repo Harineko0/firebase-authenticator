@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.AddressableAssets;
-using Zenject;
 
 namespace Pibrary.Config
 {
     public static class ConfigProvider
     {
-        private static IConfigLoader configLoader;
+        private static IConfigLoader configLoader = null;
 
         private static IConfigLoader Loader
         {
@@ -19,8 +17,7 @@ namespace Pibrary.Config
                 else
                 {
                     Debug.Log("Loading ConfigLoader");
-                    var op = Addressables.LoadAssetAsync<GameObject>(Constant.getAssetPath("ConfigLoader"));
-                    GameObject gameObject = op.WaitForCompletion();
+                    GameObject gameObject = Resources.Load<GameObject>(Constant.getAssetPath("Prefabs/ConfigLoader")); 
                     GameObject instance = GameObject.Instantiate(gameObject);
                     configLoader = instance.GetComponent<IConfigLoader>();
                     return Loader;
@@ -36,11 +33,6 @@ namespace Pibrary.Config
         public static ContentConfig ContentConfig
         {
             get { return Loader.Config.ContentConfig; }
-        }
-        
-        public static void Initialize()
-        {
-            IConfigLoader loader = Loader;
         }
     }
 }

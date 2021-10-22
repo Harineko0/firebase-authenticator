@@ -29,7 +29,6 @@ namespace Pibrary
         
         public void Initialize()
         {
-            // ConfigProvider.Initialize();
             authHandler = new TestAuthHandler();
             dataStore = new SerialDataStore<SaveData>();
         }
