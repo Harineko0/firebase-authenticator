@@ -29,7 +29,7 @@ namespace Pibrary
         
         public void Initialize()
         {
-            authHandler = new TestAuthHandler();
+            authHandler = new FirebaseAuthHandler();
             dataStore = new SerialDataStore<SaveData>();
         }
     }
