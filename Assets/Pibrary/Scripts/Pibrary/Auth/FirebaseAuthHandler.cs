@@ -16,7 +16,7 @@ namespace Pibrary.Auth
             get { return stateSubject; }
         }
 
-        public async void GoogleSignIn()
+        public async void OAuthSignIn()
         {
             stateSubject.OnNext(LoadingState.Loading);
             string clientID = ConfigProvider.OAuthConfig.cliendID;

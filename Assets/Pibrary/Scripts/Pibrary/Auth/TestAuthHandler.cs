@@ -1,7 +1,9 @@
 ﻿using System;
-using GoogleOAuth;
+using System.Threading.Tasks;
+using Google;
 using Pibrary.Config;
 using UniRx;
+using Unity;
 using UnityEngine;
 
 namespace Pibrary.Auth
@@ -14,19 +16,34 @@ namespace Pibrary.Auth
             get { return stateSubject; }
         }
 
-        public async void GoogleSignIn()
+        private bool initialized;
+        
+        public async void OAuthSignIn()
         {
-            // Assert.That(_clientId, Is.Not.Null.Or.Empty);
-
-            string _clientId = "852955764328-pvpflecs80i6nhf04daqbk6tjvahaknb.apps.googleusercontent.com";
-            var provider = new AuthorizationCodeProvider(_clientId);
-            var handle = await provider.ProvideAsync();
-            if (!handle.IsFailed)
+            if (!initialized)
             {
-                var result = handle.Result;
-                Debug.Log(result);
+                string clientID = "852955764328-acsd9qpovds074rp7q1a53crcd94nsqt.apps.googleusercontent.com";
+                GoogleSignIn.Configuration = new GoogleSignInConfiguration {
+                    RequestIdToken = true,
+                    // Copy this value from the google-service.json file.
+                    // oauth_client with type == 3
+                    WebClientId = clientID
+                };
+                initialized = true;
             }
-            provider.Dispose();
+            
+            stateSubject.OnNext(LoadingState.Loading);
+            Task<GoogleSignInUser> signIn = GoogleSignIn.DefaultInstance.SignIn();
+
+            signIn.ContinueWith(task => {
+                if (task.IsCanceled) {
+                    Debug.Log("GoogleSignIn was canceled.");
+                } else if (task.IsFaulted) {
+                    Debug.Log("GoogleSignIn was error.");
+                } else {
+                    // Credential credential = Firebase.Auth.GoogleAuthProvider.GetCredential(((Task<GoogleSignInUser>)task).Result.IdToken, null);
+                }
+            });
         }
 
         public void EmailSignIn(string email, string password)

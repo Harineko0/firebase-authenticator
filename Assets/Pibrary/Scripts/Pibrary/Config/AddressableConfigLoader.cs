@@ -40,7 +40,7 @@ namespace Pibrary.Config
             {
                 if (config == null)
                 {
-                    Debug.Log("FirebaseAuthConfig is not loaded yet.");
+                    Debug.Log("PibraryConfig is not loaded yet.");
                     LoadConfig();
                 }
                 return config;

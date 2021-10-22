@@ -19,12 +19,17 @@ namespace Pibrary.Presenters
             
             googleButton
                 .OnClickAsObservable()
-                .Subscribe(_ => authHandler.GoogleSignIn())
+                .Subscribe(_ => authHandler.OAuthSignIn())
                 .AddTo(this);
 
             authHandler.OnStateChanged
                 .Subscribe(state =>
                 {
+                    if (state == LoadingState.Loading)
+                    {
+                        Debug.Log("Loading ");
+                        log.text = "Loading";
+                    }
                     if (state == LoadingState.Completed)
                     {
                         Debug.Log("Complete");
