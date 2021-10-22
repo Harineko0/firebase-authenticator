@@ -48,6 +48,7 @@ namespace GoogleOAuth
             var codeChallenge = ConvertToBase64Url(Sha256(codeVerifier));
             var state = GetRandomStringForUrl(32);
             var redirectPort = GetRandomPort();
+            Debug.Log(redirectPort);
             var redirectUri = $"http://localhost:{redirectPort}";
             var redirectUriWithSlash = $"{redirectUri}/";
 

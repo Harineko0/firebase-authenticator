@@ -30,7 +30,7 @@ namespace Pibrary
         public void Initialize()
         {
             ConfigProvider.Initialize();
-            authHandler = new FirebaseAuthHandler();
+            authHandler = new TestAuthHandler();
             dataStore = new SerialDataStore<SaveData>();
         }
     }

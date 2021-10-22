@@ -9,6 +9,7 @@ namespace Pibrary.Presenters
     public class AuthPresenter : MonoBehaviour
     {
         [SerializeField] private Button googleButton;
+        [SerializeField] private Text log;
         
         private void Start()
         {
@@ -27,6 +28,7 @@ namespace Pibrary.Presenters
                     if (state == LoadingState.Completed)
                     {
                         Debug.Log("Complete");
+                        log.text = "Complete";
                     }
                 });
         }
