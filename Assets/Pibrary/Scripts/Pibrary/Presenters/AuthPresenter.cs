@@ -19,7 +19,7 @@ namespace Pibrary.Presenters
             
             googleButton
                 .OnClickAsObservable()
-                .Subscribe(_ => authHandler.OAuthSignIn())
+                .Subscribe(_ => authHandler.CallGoogleSignIn())
                 .AddTo(this);
 
             authHandler.OnStateChanged

@@ -18,11 +18,12 @@ namespace Pibrary.Auth
 
         private bool initialized;
         
-        public async void OAuthSignIn()
+        public async void CallGoogleSignIn()
         {
             if (!initialized)
             {
-                string clientID = "852955764328-acsd9qpovds074rp7q1a53crcd94nsqt.apps.googleusercontent.com";
+                string clientID = ConfigProvider.OAuthConfig.cliendID;
+                Debug.Log(clientID);
                 GoogleSignIn.Configuration = new GoogleSignInConfiguration {
                     RequestIdToken = true,
                     // Copy this value from the google-service.json file.
@@ -46,7 +47,7 @@ namespace Pibrary.Auth
             });
         }
 
-        public void EmailSignIn(string email, string password)
+        public void CallEmailSignIn(string email, string password)
         {
             stateSubject.OnNext(LoadingState.Loading);
             

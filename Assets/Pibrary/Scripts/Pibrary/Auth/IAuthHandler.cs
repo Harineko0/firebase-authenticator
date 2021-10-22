@@ -6,7 +6,7 @@ namespace Pibrary.Auth
     public interface IAuthHandler
     {
         public IObservable<LoadingState> OnStateChanged { get; }
-        public void OAuthSignIn();
-        public void EmailSignIn(string email, string password);
+        public void CallGoogleSignIn();
+        public void CallEmailSignIn(string email, string password);
     }
 }
